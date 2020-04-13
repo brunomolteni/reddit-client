@@ -1,0 +1,12 @@
+body,
+html {
+  overflow-x: hidden;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+main {
+  padding: 20px;
+}
