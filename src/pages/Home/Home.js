@@ -1,9 +1,15 @@
 import React from "react";
 
-import { useUiSlice } from "../../hooks";
+import { useRedditSlice } from "../../hooks";
 
 export default function Home() {
-  const [ui, actions] = useUiSlice();
+  const [data, actions] = useRedditSlice();
 
-  return <div>Home is working!</div>;
+  return (
+    <div>
+      {!data && <p>...Loading</p>}
+      {data &&
+        data.map((item) => <p key={item.data.name}>{item.data.title}</p>)}
+    </div>
+  );
 }

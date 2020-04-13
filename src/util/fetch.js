@@ -8,7 +8,13 @@ const acceptOnly200 = (response) => {
 
 const request = (...args) => fetch(...args).then(acceptOnly200);
 
-export const get = (url) => request(url);
+export const get = (url) =>
+  request(url, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+      "User-Agent": "RedditClient/0.1 by Acrobatic_Business",
+    },
+  });
 
 export const post = (url, data) =>
   request(url, {
