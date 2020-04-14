@@ -6,12 +6,11 @@ import { useRedditSlice } from "../../hooks";
 import ListItem from "./ListItem";
 
 export default function Sidebar() {
-  const { posts, state, actions } = useRedditSlice();
+  const { posts, read, actions } = useRedditSlice();
 
-  const { read, hidden } = state;
-
+  // When we first show the list, mark the first post as read
   useEffect(() => {
-    posts && actions.setAsRead(posts[0].data.name);
+    posts && !read.includes(posts[0].name) && actions.setAsRead(posts[0].name);
   }, [posts]);
 
   return (
@@ -20,9 +19,9 @@ export default function Sidebar() {
       {posts &&
         posts.map((post) => (
           <ListItem
-            key={post.data.name}
-            post={post.data}
-            isRead={read.includes(post.data.name)}
+            key={post.name}
+            post={post}
+            isRead={read.includes(post.name)}
           />
         ))}
     </div>

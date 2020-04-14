@@ -2,9 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { rootReducer } from "./reducers/rootReducer";
 
+import { getStateFromSession } from "./util/sessionState";
+
 // Create store
 const store = configureStore({
   reducer: rootReducer,
+  preloadedState: getStateFromSession() || {},
 });
 
 // Setup redux hot reloading

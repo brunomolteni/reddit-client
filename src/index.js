@@ -1,11 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 
-import { post } from "./util";
 import store from "./store";
 import { actions } from "./reducers/redditSlice";
-
-const API_ENDPOINT = "https://oauth.reddit.com/top";
+import { saveStateToSession } from "./util";
 
 const renderApp = () => {
   const App = require("./App").default;
@@ -13,15 +11,19 @@ const renderApp = () => {
   render(<App />, document.getElementById("app"));
 };
 
-if (!sessionStorage.getItem("token")) {
-  post("/.netlify/functions/access_token").then((token) => {
-    sessionStorage.setItem("token", token);
-    store.dispatch(actions.setToken(token));
-  });
+// If there's no token saved, fetch the access token
+if (!store.getState().reddit.token) {
+  store.dispatch(actions.refreshToken());
 }
+
+// before closing the window, save the state to session storage
+window.onbeforeunload = function () {
+  saveStateToSession();
+};
 
 renderApp();
 
+// enable hot reload
 if (process.env.NODE_ENV === "development" && module.hot) {
   module.hot.accept("./App", renderApp);
 }

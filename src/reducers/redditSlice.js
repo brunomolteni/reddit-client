@@ -1,23 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { post } from "../util";
 
 const asyncActions = {
-  update: createAsyncThunk("reddit/update", async (data) =>
-    post(`/api/update/`, data)
+  refreshToken: createAsyncThunk("reddit/refreshToken", async () =>
+    fetch("/.netlify/functions/access_token", { method: "POST" }).then((res) =>
+      res.json()
+    )
   ),
 };
 
 const redditSlice = createSlice({
   name: "reddit",
   initialState: {
-    token: sessionStorage.getItem("token"),
+    read: [],
+    category: "top",
   },
   reducers: {
-    setToken: (reddit, action) => {
+    setAsRead: (reddit, action) => {
+      reddit.read.push(action.payload);
+    },
+    setPage: (reddit, action) => {
+      reddit.page = action.payload;
+    },
+  },
+  extraReducers: {
+    [asyncActions.refreshToken.fulfilled]: (reddit, action) => {
       reddit.token = action.payload;
     },
   },
-  extraReducers: {},
 });
 
 export const actions = {
