@@ -1,12 +1,40 @@
+:root {
+  --reddit-orange: #f74401;
+  --main-bg: #ddd;
+  --main-text: #333;
+  --main-title: #000;
+  --sidebar-bg: #333;
+  --sidebar-text: #ccc;
+  --sidebar-title: #eee;
+  --sidebar-separator: #555;
+  --spacing: 10px;
+  --thumb-size: 50px;
+  --sidebar-size: 100vw;
+}
+
 body,
 html {
   overflow-x: hidden;
-  font-family: sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: var(--main-bg);
+  font-family: "Inter", sans-serif;
 }
 
 main {
   padding: 20px;
+}
+
+@media screen and (min-width: 750px) {
+  :root {
+    --spacing: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --thumb-size: 100px;
+    --sidebar-size: min(500px, 50vw);
+  }
 }

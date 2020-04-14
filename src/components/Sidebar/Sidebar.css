@@ -1,0 +1,11 @@
+.sidebar {
+  position: fixed;
+  max-width: var(--sidebar-size);
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: var(--spacing);
+  overflow-x: auto;
+}
