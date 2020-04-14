@@ -8,7 +8,7 @@ const acceptOnly200 = (response) => {
   }
   // if response is Unauthorized, refresh token
   if (response.status === 401) {
-    // store.dispatch(actions.refreshToken());
+    store.dispatch(actions.refreshToken());
   }
 
   return Promise.reject(response.statusText);

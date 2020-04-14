@@ -12,6 +12,23 @@
   --sidebar-size: 100vw;
 }
 
+@media screen and (min-width: 750px) {
+  :root {
+    --spacing: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --thumb-size: 100px;
+    --sidebar-size: min(500px, 50vw);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body,
 html {
   overflow-x: hidden;
@@ -23,18 +40,31 @@ html {
 }
 
 main {
-  padding: 20px;
+  padding: var(--spacing);
 }
 
-@media screen and (min-width: 750px) {
-  :root {
-    --spacing: 20px;
+ion-icon {
+  color: currentColor;
+}
+
+ion-icon[title="Loading"] {
+  animation: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  font-size: 4rem;
+  margin: 25vh auto;
+  display: block;
+}
+
+@keyframes loading {
+  0% {
+    color: currentColor;
   }
-}
-
-@media screen and (min-width: 1024px) {
-  :root {
-    --thumb-size: 100px;
-    --sidebar-size: min(500px, 50vw);
+  50% {
+    color: var(--reddit-orange);
+  }
+  100% {
+    color: currentColor;
   }
 }

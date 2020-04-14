@@ -12,14 +12,21 @@ const redditSlice = createSlice({
   name: "reddit",
   initialState: {
     read: [],
+    seen: [],
     category: "top",
   },
   reducers: {
+    // save read posts id's to visualize in the app
     setAsRead: (reddit, action) => {
       reddit.read.push(action.payload);
     },
+    // set the page query strings to fetch new posts
     setPage: (reddit, action) => {
       reddit.page = action.payload;
+    },
+    // save all seen post's unique ids to calculate count for pagination
+    setSeen: (reddit, action) => {
+      reddit.seen = [...new Set([...reddit.seen, ...action.payload])];
     },
   },
   extraReducers: {

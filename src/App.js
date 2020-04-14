@@ -24,7 +24,7 @@ const App = () => {
     >
       <Provider store={store}>
         <Header />
-        <main>{activeRoute || notFound}</main>
+        {activeRoute || notFound}
       </Provider>
     </SWRConfig>
   );

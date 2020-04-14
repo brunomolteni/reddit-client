@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useSWR from "swr";
+import { useQueryParams } from "hookrouter";
 
 import { useActions } from "./";
 import { toQueryString } from "../util";
@@ -27,19 +28,22 @@ const leaveOnlyNecessaryData = ({
 });
 
 export const useRedditSlice = () => {
-  const { token, read, category, page } = useSelector((state) => state.reddit);
+  const bindedActions = useActions(actions);
+  const { token, read, category } = useSelector((state) => state.reddit);
+  const [queryParams] = useQueryParams();
 
+  // form pagination query string from redux state
   const queryString = toQueryString({
-    ...page,
+    ...queryParams,
     limit: 50,
   });
 
+  // SWR handles data fetching automatically. see https://swr.now.sh/
   const { data } = useSWR(
     () => token && `/.netlify/functions/api/${category}${queryString}`
   );
 
-  const bindedActions = useActions(actions);
-
+  // massage the data
   const posts =
     data && data.children.map((item) => item.data).map(leaveOnlyNecessaryData);
 
