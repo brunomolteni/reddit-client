@@ -42,6 +42,7 @@ export default function Sidebar() {
   return (
     <div className={styles.sidebar}>
       {!posts && <ion-icon name="logo-reddit" title="Loading"></ion-icon>}
+
       {posts &&
         posts.map((post) => (
           <ListItem
@@ -51,6 +52,7 @@ export default function Sidebar() {
             open={openPost}
           />
         ))}
+
       {posts && (
         <div className={styles.pagination}>
           <div
@@ -59,6 +61,10 @@ export default function Sidebar() {
           >
             <ion-icon name="arrow-back-circle" size="large" />
           </div>
+          <p>
+            {posts.filter((post) => read.includes(post.name)).length} of{" "}
+            {posts.length} Read
+          </p>
           <div
             onClick={nextPage}
             className={c("sidebar-pagination", { "--disabled": isLastPage })}

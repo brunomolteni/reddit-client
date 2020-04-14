@@ -3,15 +3,18 @@
   --main-bg: #ddd;
   --main-text: #333;
   --main-title: #000;
+  --header-bg: #666;
+  --header-size: 60px;
+  --sidebar-size: 100vw;
   --sidebar-bg: #333;
   --sidebar-text: #ccc;
   --sidebar-text-size: 1rem;
   --sidebar-line-height: 1.2;
   --sidebar-title: #eee;
   --sidebar-separator: #555;
-  --spacing: 10px;
+  --pagination-size: 50px;
   --thumb-size: 50px;
-  --sidebar-size: 100vw;
+  --spacing: 10px;
 }
 
 @media screen and (min-width: 750px) {
@@ -54,6 +57,13 @@ main {
 
 ion-icon {
   color: currentColor;
+}
+
+ion-icon[title="Reddit Logo"] {
+  color: white;
+  background-color: var(--reddit-orange);
+  font-size: 30px;
+  padding: 5px;
 }
 
 ion-icon[title="Loading"] {

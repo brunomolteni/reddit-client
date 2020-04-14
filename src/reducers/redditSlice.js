@@ -24,9 +24,9 @@ const redditSlice = createSlice({
     setPage: (reddit, action) => {
       reddit.page = action.payload;
     },
-    // save all seen post's unique ids to calculate count for pagination
-    setSeen: (reddit, action) => {
-      reddit.seen = [...new Set([...reddit.seen, ...action.payload])];
+    // set the open post id
+    openPost: (reddit, action) => {
+      reddit.open = action.payload;
     },
   },
   extraReducers: {
