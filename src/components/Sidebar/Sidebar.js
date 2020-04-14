@@ -19,6 +19,11 @@ export default function Sidebar() {
       actions.setAsRead(posts[0].name);
   }, [posts]);
 
+  const openPost = (post) => {
+    actions.openPost(post.name);
+    actions.setAsRead(post.name);
+  };
+
   const prevPage = () =>
     !isFirstPage &&
     setQueryParams({
@@ -43,6 +48,7 @@ export default function Sidebar() {
             key={post.name}
             post={post}
             isRead={read.includes(post.name)}
+            open={openPost}
           />
         ))}
       {posts && (

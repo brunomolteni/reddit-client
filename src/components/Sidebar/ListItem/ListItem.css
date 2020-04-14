@@ -1,37 +1,48 @@
-.item {
+:global .list-item {
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   margin-bottom: var(--spacing);
+  padding-left: var(--spacing);
   border-bottom: 1px solid var(--sidebar-separator);
+  flex-wrap: wrap;
+  font-size: var(--sidebar-text-size);
+  line-height: var(--sidebar-line-height);
+}
+:global .list-item:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: calc(var(--spacing) * -1);
+  bottom: var(--spacing);
+  border-left: 4px solid var(--reddit-orange);
+}
+:global .list-item.--read:before {
+  border-left-color: transparent;
 }
 
 .info {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  margin-bottom: var(--spacing);
 }
 
 .thumbnail {
   object-fit: cover;
   width: var(--thumb-size);
   height: var(--thumb-size);
-  margin-right: var(--spacing);
+  margin: 0 var(--spacing) var(--spacing) 0;
   flex-shrink: 0;
 }
 
 .title {
   color: var(--sidebar-title);
   margin: 0 0 var(--spacing);
+  width: 100%;
 }
 
 .author {
-  margin: 0 0 calc(var(--spacing) / 2);
-  padding-right: 100px;
-}
-
-.comments {
-  position: absolute;
-  top: 0;
-  right: 0;
+  font-weight: bold;
 }

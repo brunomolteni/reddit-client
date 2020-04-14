@@ -5,6 +5,8 @@
   --main-title: #000;
   --sidebar-bg: #333;
   --sidebar-text: #ccc;
+  --sidebar-text-size: 1rem;
+  --sidebar-line-height: 1.2;
   --sidebar-title: #eee;
   --sidebar-separator: #555;
   --spacing: 10px;
@@ -14,14 +16,21 @@
 
 @media screen and (min-width: 750px) {
   :root {
-    --spacing: 20px;
+    --sidebar-size: min(600px, 50vw);
   }
 }
 
 @media screen and (min-width: 1024px) {
   :root {
-    --thumb-size: 100px;
-    --sidebar-size: min(500px, 50vw);
+    --spacing: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --thumb-size: 80px;
+    --sidebar-text-size: 1.2rem;
+    --sidebar-line-height: 1.5;
   }
 }
 
