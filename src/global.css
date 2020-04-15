@@ -12,29 +12,10 @@
   --sidebar-line-height: 1.2;
   --sidebar-title: #eee;
   --sidebar-separator: #555;
+  --sidebar-position-when-closed: -100%;
   --pagination-size: 50px;
   --thumb-size: 50px;
   --spacing: 10px;
-}
-
-@media screen and (min-width: 750px) {
-  :root {
-    --sidebar-size: min(600px, 50vw);
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  :root {
-    --spacing: 20px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  :root {
-    --thumb-size: 80px;
-    --sidebar-text-size: 1.2rem;
-    --sidebar-line-height: 1.5;
-  }
 }
 
 * {
@@ -53,6 +34,7 @@ html {
 
 main {
   padding: var(--spacing);
+  margin: var(--header-size) 0 0;
 }
 
 ion-icon {
@@ -68,12 +50,36 @@ ion-icon[title="Reddit Logo"] {
 
 ion-icon[title="Loading"] {
   animation: loading;
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   font-size: 4rem;
   margin: 25vh auto;
   display: block;
+}
+
+@media screen and (min-width: 750px) {
+  :root {
+    --sidebar-size: min(600px, 50vw);
+    --sidebar-position-when-closed: 0;
+  }
+  main {
+    margin: var(--header-size) 0 0 var(--sidebar-size);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  :root {
+    --spacing: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  :root {
+    --thumb-size: 80px;
+    --sidebar-text-size: 1.2rem;
+    --sidebar-line-height: 1.5;
+  }
 }
 
 @keyframes loading {

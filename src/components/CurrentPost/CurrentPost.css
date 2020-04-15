@@ -1,0 +1,22 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  margin-bottom: var(--spacing);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--main-text: #333);
+}
+
+.image {
+  max-width: 100%;
+  margin-bottom: var(--spacing);
+}

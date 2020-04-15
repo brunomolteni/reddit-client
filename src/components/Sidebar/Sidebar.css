@@ -9,27 +9,15 @@
   color: var(--sidebar-text);
   padding: var(--spacing);
   overflow-x: auto;
+  transform: translateX(var(--sidebar-position-when-closed));
+  will-change: transform;
+  transition: transform 0.2s ease-in;
 }
 
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: var(--sidebar-size);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-  padding: 0 var(--spacing);
-  height: var(--pagination-size);
-  background-color: var(--sidebar-bg);
+:global .sidebar--open {
+  transform: translateY(0);
 }
 
-:global .sidebar-pagination {
-  cursor: pointer;
-}
-
-:global .sidebar-pagination.--disabled {
-  cursor: default;
-  opacity: 0.2;
+:global .sidebar--open + .pagination {
+  transform: translateY(0);
 }

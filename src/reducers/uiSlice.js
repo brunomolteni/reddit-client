@@ -1,16 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const asyncActions = {
-  delete: createAsyncThunk("user/delete", async (id) =>
-    del(`/api/users/${id}`)
-  ),
-};
+import { actions as redditActions } from "./redditSlice";
+
+const asyncActions = {};
 
 const uiSlice = createSlice({
   name: "ui",
-  initialState: {},
-  reducers: {},
-  extraReducers: {},
+  initialState: {
+    sidebar: true,
+  },
+  reducers: {
+    toggleSidebar: (ui) => {
+      ui.sidebar = !ui.sidebar;
+    },
+  },
+  extraReducers: {
+    [redditActions.openPost]: (ui) => {
+      ui.sidebar = false;
+    },
+  },
 });
 
 export const actions = {

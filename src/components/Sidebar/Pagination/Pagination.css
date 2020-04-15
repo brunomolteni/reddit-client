@@ -1,0 +1,27 @@
+:global .pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--sidebar-size);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding: 0 var(--spacing);
+  height: var(--pagination-size);
+  background-color: var(--sidebar-bg);
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateX(var(--sidebar-position-when-closed));
+  will-change: transform;
+  transition: transform 0.2s ease-in;
+}
+
+:global .sidebar-pagination {
+  cursor: pointer;
+}
+
+:global .sidebar-pagination.--disabled {
+  cursor: default;
+  opacity: 0.2;
+  pointer-events: none;
+}

@@ -16,6 +16,8 @@ const leaveOnlyNecessaryData = ({
   hidden,
   created_utc,
   subreddit,
+  url,
+  post_hint,
 }) => ({
   name,
   title,
@@ -25,11 +27,13 @@ const leaveOnlyNecessaryData = ({
   hidden,
   created_utc,
   subreddit,
+  url,
+  post_hint,
 });
 
 export const useRedditSlice = () => {
   const bindedActions = useActions(actions);
-  const { token, read, category } = useSelector((state) => state.reddit);
+  const { token, read, category, open } = useSelector((state) => state.reddit);
   const [queryParams] = useQueryParams();
 
   // form pagination query string from redux state
@@ -47,8 +51,12 @@ export const useRedditSlice = () => {
   const posts =
     data && data.children.map((item) => item.data).map(leaveOnlyNecessaryData);
 
+  const current =
+    posts && (posts.find((post) => post.name === open) || posts[0]);
+
   return {
     posts,
+    current,
     read,
     isFirstPage: data && !data.before,
     isLastPage: data && !data.after,
