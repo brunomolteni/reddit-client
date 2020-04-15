@@ -19,7 +19,7 @@ This was bootstrapped with my [hooked-stack](https://github.com/brunomolteni/hoo
 - I implemented a responsive layout using modern CSS techniques such as CSS variables and flexbox, and used CSS modules for organizing the styles.
 - I implemented pagination with the params on the URL so you can refresh and still be on the same page
 
-I didn't get to implement the dismiss functionality, but the lambda API proxy was done having this functionality in mind, to use the /hide endpoint and have dismissed posts be persistent across sessions.
+I didn't get to implement the dismiss functionality, but the lambda API proxy was done having this functionality in mind, to use the /hide endpoint and have dismissed posts be persistent across sessions. 
 
 ## Running the app
 
