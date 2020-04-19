@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   font-size: var(--sidebar-text-size);
   line-height: var(--sidebar-line-height);
+  cursor: pointer;
 }
 :global .list-item:before {
   content: "";

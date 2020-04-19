@@ -7,6 +7,7 @@
   bottom: 0;
   left: 0;
   z-index: 10;
+  color: var(--sidebar-text);
   padding: 0 var(--spacing);
   height: var(--pagination-size);
   background-color: var(--sidebar-bg);
