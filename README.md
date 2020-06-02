@@ -1,4 +1,4 @@
-# Reddit Client
+# Reddit Client ( [View Demo](https://reddit-coding-test.netlify.com/) )
 
 A simple reddit client to browse top posts, done with a modern React stack using hooks for data fetching, routing and redux integration.
 
